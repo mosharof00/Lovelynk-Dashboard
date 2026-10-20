@@ -1,0 +1,137 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.loginWrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top right, rgba(255, 75, 114, 0.08), transparent 40%),
+              radial-gradient(circle at bottom left, rgba(0, 180, 216, 0.06), transparent 40%),
+              $color-bg;
+  padding: 24px;
+}
+
+.loginCard {
+  width: 100%;
+  max-width: 420px;
+  background-color: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-xl;
+  box-shadow: $shadow-lg;
+  padding: 40px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+
+  .logoBox {
+    width: 52px;
+    height: 52px;
+    border-radius: $radius-lg;
+    background: linear-gradient(135deg, $color-primary 0%, #ff758c 100%);
+    @include flex-center;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(255, 75, 114, 0.35);
+  }
+
+  h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: $color-text-primary;
+    letter-spacing: -0.4px;
+  }
+
+  p {
+    font-size: 13px;
+    color: $color-text-secondary;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  .inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    label {
+      font-size: 12px;
+      font-weight: 600;
+      color: $color-text-primary;
+    }
+
+    input {
+      padding: 12px 14px;
+      border-radius: $radius-md;
+      border: 1px solid $color-border;
+      background-color: $color-surface;
+      font-size: 14px;
+      color: $color-text-primary;
+      transition: border-color $transition-fast, box-shadow $transition-fast;
+
+      &:focus {
+        outline: none;
+        border-color: $color-primary;
+        box-shadow: 0 0 0 3px $color-primary-light;
+      }
+
+      &::placeholder {
+        color: #94a3b8;
+      }
+    }
+  }
+
+  .errorBanner {
+    padding: 10px 14px;
+    border-radius: $radius-md;
+    background-color: $color-danger-light;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: $color-danger;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .submitButton {
+    margin-top: 6px;
+    padding: 13px;
+    border-radius: $radius-md;
+    background: linear-gradient(135deg, $color-primary 0%, #ff6b8b 100%);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(255, 75, 114, 0.3);
+    transition: all $transition-fast;
+
+    &:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(255, 75, 114, 0.4);
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.cardFooter {
+  text-align: center;
+  font-size: 11px;
+  color: $color-text-muted;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}

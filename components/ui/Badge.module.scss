@@ -1,0 +1,59 @@
+@use '@/styles/variables' as *;
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: $radius-full;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1px;
+  text-transform: capitalize;
+
+  .dot {
+    width: 5px;
+    height: 5px;
+    border-radius: $radius-full;
+  }
+
+  &.success {
+    background-color: $color-success-light;
+    color: #059669;
+    .dot {
+      background-color: #059669;
+    }
+  }
+
+  &.warning {
+    background-color: $color-warning-light;
+    color: #d97706;
+    .dot {
+      background-color: #d97706;
+    }
+  }
+
+  &.danger {
+    background-color: $color-danger-light;
+    color: #dc2626;
+    .dot {
+      background-color: #dc2626;
+    }
+  }
+
+  &.info {
+    background-color: $color-info-light;
+    color: #2563eb;
+    .dot {
+      background-color: #2563eb;
+    }
+  }
+
+  &.neutral {
+    background-color: $color-surface-hover;
+    color: $color-text-secondary;
+    .dot {
+      background-color: $color-text-secondary;
+    }
+  }
+}

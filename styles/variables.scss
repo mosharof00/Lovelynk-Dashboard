@@ -1,0 +1,60 @@
+// Lovelynk SaaS Design Tokens
+
+// Brand colors
+$color-primary: #ff4b72;
+$color-primary-hover: #e63e63;
+$color-primary-light: rgba(255, 75, 114, 0.08);
+$color-primary-subtle: rgba(255, 75, 114, 0.16);
+
+$color-secondary: #00b4d8;
+$color-secondary-hover: #0096c7;
+$color-secondary-light: rgba(0, 180, 216, 0.08);
+
+// Status colors
+$color-success: #10b981;
+$color-success-light: rgba(16, 185, 129, 0.1);
+$color-warning: #f59e0b;
+$color-warning-light: rgba(245, 158, 11, 0.1);
+$color-danger: #ef4444;
+$color-danger-light: rgba(239, 68, 68, 0.1);
+$color-info: #3b82f6;
+$color-info-light: rgba(59, 130, 246, 0.1);
+
+// Neutrals & Surfaces (Clean SaaS Dark/Light Ready)
+$color-bg: #f8fafc;
+$color-surface: #ffffff;
+$color-surface-hover: #f1f5f9;
+$color-surface-muted: #f8fafc;
+
+$color-sidebar-bg: #0f172a;
+$color-sidebar-surface: #1e293b;
+$color-sidebar-text: #94a3b8;
+$color-sidebar-active: #ffffff;
+$color-sidebar-border: #334155;
+
+$color-text-primary: #0f172a;
+$color-text-secondary: #64748b;
+$color-text-muted: #94a3b8;
+$color-border: #e2e8f0;
+$color-border-subtle: #f1f5f9;
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
+$shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.03);
+
+// Radii
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 14px;
+$radius-xl: 20px;
+$radius-full: 9999px;
+
+// Layout
+$sidebar-width: 260px;
+$header-height: 64px;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-base: 220ms ease;

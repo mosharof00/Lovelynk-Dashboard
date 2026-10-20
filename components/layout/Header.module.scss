@@ -1,0 +1,82 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.header {
+  height: $header-height;
+  background-color: $color-surface;
+  border-bottom: 1px solid $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.titleArea {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  .title {
+    font-size: 18px;
+    font-weight: 700;
+    color: $color-text-primary;
+    letter-spacing: -0.2px;
+  }
+
+  .badge {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: $radius-full;
+    background-color: $color-primary-light;
+    color: $color-primary;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  .envTag {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: $color-text-secondary;
+    background-color: $color-surface-muted;
+    border: 1px solid $color-border;
+    padding: 4px 10px;
+    border-radius: $radius-full;
+
+    .envDot {
+      width: 6px;
+      height: 6px;
+      border-radius: $radius-full;
+      background-color: $color-success;
+    }
+  }
+
+  .refreshButton {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $color-text-secondary;
+    border: 1px solid $color-border;
+    border-radius: $radius-md;
+    background-color: $color-surface;
+    transition: all $transition-fast;
+
+    &:hover {
+      background-color: $color-surface-hover;
+      color: $color-text-primary;
+    }
+  }
+}

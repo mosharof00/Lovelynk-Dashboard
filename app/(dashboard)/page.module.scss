@@ -1,0 +1,192 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.welcomeSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .welcomeText {
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      color: $color-text-primary;
+      letter-spacing: -0.3px;
+    }
+
+    p {
+      font-size: 13px;
+      color: $color-text-secondary;
+      margin-top: 4px;
+    }
+  }
+
+  .quickActions {
+    display: flex;
+    gap: 12px;
+
+    .primaryBtn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: $radius-md;
+      background: linear-gradient(135deg, $color-primary 0%, #ff6b8b 100%);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(255, 75, 114, 0.25);
+      transition: all $transition-fast;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(255, 75, 114, 0.35);
+      }
+    }
+
+    .secondaryBtn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: $radius-md;
+      background-color: $color-surface;
+      border: 1px solid $color-border;
+      color: $color-text-primary;
+      font-size: 13px;
+      font-weight: 600;
+      transition: all $transition-fast;
+
+      &:hover {
+        background-color: $color-surface-hover;
+      }
+    }
+  }
+}
+
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.gridTwoCols {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  @include card-surface;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  .panelHeader {
+    @include flex-between;
+
+    h3 {
+      font-size: 16px;
+      font-weight: 700;
+      color: $color-text-primary;
+      letter-spacing: -0.2px;
+    }
+
+    .panelAction {
+      font-size: 13px;
+      font-weight: 600;
+      color: $color-primary;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.tableWrapper {
+  overflow-x: auto;
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+
+    th {
+      text-align: left;
+      padding: 10px 12px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: $color-text-muted;
+      border-bottom: 1px solid $color-border;
+      font-weight: 600;
+    }
+
+    td {
+      padding: 14px 12px;
+      border-bottom: 1px solid $color-border-subtle;
+      color: $color-text-secondary;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background-color: rgba(248, 250, 252, 0.6);
+    }
+  }
+}
+
+.statusCardList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .statusCardItem {
+    padding: 14px;
+    border-radius: $radius-md;
+    background-color: $color-surface-muted;
+    border: 1px solid $color-border-subtle;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+
+      .itemTitle {
+        font-size: 13px;
+        font-weight: 600;
+        color: $color-text-primary;
+      }
+
+      .itemSubtitle {
+        font-size: 11px;
+        color: $color-text-muted;
+      }
+    }
+  }
+}

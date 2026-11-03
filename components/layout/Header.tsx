@@ -1,46 +1,27 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { RefreshCw } from 'lucide-react';
-import { useState } from 'react';
+import { Bell, User } from 'lucide-react';
 import styles from './Header.module.scss';
 
-export function Header({ title = 'Overview' }: { title?: string }) {
-  const router = useRouter();
-  const [isRefreshing, setIsRefreshing] = useState(false);
-
-  const handleRefresh = () => {
-    setIsRefreshing(true);
-    router.refresh();
-    setTimeout(() => setIsRefreshing(false), 600);
-  };
-
+export function Header() {
   return (
     <header className={styles.header}>
-      <div className={styles.titleArea}>
-        <h1 className={styles.title}>{title}</h1>
-        <span className={styles.badge}>v1.0 MVP</span>
+      {/* Left side: Admin identity as shown in reference */}
+      <div className={styles.adminProfile}>
+        <span className={styles.adminName}>Admin</span>
+        <span className={styles.adminRole}>Administrator</span>
       </div>
 
-      <div className={styles.actions}>
-        <div className={styles.envTag}>
-          <span className={styles.envDot} />
-          <span>Production (Supabase)</span>
-        </div>
-
-        <button
-          onClick={handleRefresh}
-          className={styles.refreshButton}
-          disabled={isRefreshing}
-          title="Refresh live data"
-        >
-          <RefreshCw
-            size={14}
-            className={isRefreshing ? 'animate-spin' : ''}
-            style={{ animation: isRefreshing ? 'spin 1s linear infinite' : 'none' }}
-          />
-          <span>Refresh</span>
+      {/* Right side: Notification bell with badge & avatar circle */}
+      <div className={styles.rightArea}>
+        <button className={styles.notificationButton} title="Notifications">
+          <Bell size={19} />
+          <span className={styles.badge}>2</span>
         </button>
+
+        <div className={styles.avatarCircle} title="Admin Profile">
+          <User size={18} />
+        </div>
       </div>
     </header>
   );

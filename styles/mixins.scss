@@ -13,14 +13,46 @@
 }
 
 @mixin card-surface {
-  background: $color-surface;
-  border: 1px solid $color-border;
+  background: $color-card-bg;
+  border: 1px solid $color-card-border;
   border-radius: $radius-lg;
-  box-shadow: $shadow-card;
-  transition: box-shadow $transition-base, border-color $transition-base;
+  transition: border-color $transition-fast, box-shadow $transition-fast;
+}
+
+@mixin pill-btn-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: $color-btn-dark;
+  color: #ffffff;
+  padding: 6px 14px;
+  border-radius: $radius-full;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background-color $transition-fast, transform $transition-fast;
 
   &:hover {
-    box-shadow: $shadow-md;
+    background-color: $color-btn-dark-hover;
+    transform: translateY(-0.5px);
+  }
+}
+
+@mixin pill-btn-reject {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: $color-danger-light;
+  color: $color-danger;
+  border: 1px solid $color-danger-border;
+  padding: 6px 14px;
+  border-radius: $radius-full;
+  font-size: 12px;
+  font-weight: 600;
+  transition: background-color $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background-color: #fee2e2;
+    transform: translateY(-0.5px);
   }
 }
 
@@ -35,11 +67,11 @@
   }
 
   &::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: #d4cfc3;
     border-radius: $radius-full;
 
     &:hover {
-      background: #94a3b8;
+      background: #b8b2a5;
     }
   }
 }

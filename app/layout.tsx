@@ -1,15 +1,9 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.scss';
 
-const inter = Inter({
-  subsets: ['latin'],
-  display: 'swap',
-});
-
 export const metadata: Metadata = {
-  title: 'Lovelynk Admin — Couples & Widget Operations',
-  description: 'Operations, analytics, broadcasts, and support management for Lovelynk',
+  title: 'Lovelynk — Admin Dashboard',
+  description: 'Operations, telemetry, broadcasts, and support management for Lovelynk',
 };
 
 export default function RootLayout({
@@ -18,7 +12,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

@@ -7,73 +7,31 @@
   gap: 28px;
 }
 
-.welcomeSection {
+// Title row: "Dashboard" on left, Date on right
+.titleRow {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
-  .welcomeText {
-    h2 {
-      font-size: 22px;
-      font-weight: 700;
-      color: $color-text-primary;
-      letter-spacing: -0.3px;
-    }
-
-    p {
-      font-size: 13px;
-      color: $color-text-secondary;
-      margin-top: 4px;
-    }
+  .pageTitle {
+    font-size: 30px;
+    font-weight: 800;
+    color: $color-text-primary;
+    letter-spacing: -0.5px;
   }
 
-  .quickActions {
-    display: flex;
-    gap: 12px;
-
-    .primaryBtn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: $radius-md;
-      background: linear-gradient(135deg, $color-primary 0%, #ff6b8b 100%);
-      color: #ffffff;
-      font-size: 13px;
-      font-weight: 600;
-      box-shadow: 0 4px 12px rgba(255, 75, 114, 0.25);
-      transition: all $transition-fast;
-
-      &:hover {
-        transform: translateY(-1px);
-        box-shadow: 0 6px 16px rgba(255, 75, 114, 0.35);
-      }
-    }
-
-    .secondaryBtn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 16px;
-      border-radius: $radius-md;
-      background-color: $color-surface;
-      border: 1px solid $color-border;
-      color: $color-text-primary;
-      font-size: 13px;
-      font-weight: 600;
-      transition: all $transition-fast;
-
-      &:hover {
-        background-color: $color-surface-hover;
-      }
-    }
+  .dateIndicator {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: $color-text-secondary;
   }
 }
 
-.metricsGrid {
+// 4 KPI Cards Grid
+.kpiGrid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  gap: 18px;
 
   @media (max-width: 1200px) {
     grid-template-columns: repeat(2, 1fr);
@@ -84,47 +42,46 @@
   }
 }
 
-.gridTwoCols {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 24px;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-  }
-}
-
-.panel {
+// Main Table Card matching reference screenshot
+.mainCard {
   @include card-surface;
-  padding: 24px;
+  padding: 24px 28px 28px;
+  border-radius: $radius-xl;
+  background-color: $color-card-bg;
+  border: 1px solid $color-card-border;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
+}
 
-  .panelHeader {
-    @include flex-between;
+.mainCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-    h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: $color-text-primary;
-      letter-spacing: -0.2px;
-    }
+  .cardTitle {
+    font-size: 17px;
+    font-weight: 700;
+    color: $color-text-primary;
+    letter-spacing: -0.2px;
+  }
 
-    .panelAction {
-      font-size: 13px;
-      font-weight: 600;
-      color: $color-primary;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
+  .countBadge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fef08a;
+    color: #854d0e;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: $radius-full;
   }
 }
 
 .tableWrapper {
   overflow-x: auto;
+  @include custom-scrollbar;
 
   table {
     width: 100%;
@@ -133,19 +90,51 @@
 
     th {
       text-align: left;
-      padding: 10px 12px;
-      font-size: 11px;
+      padding: 10px 14px 14px;
+      font-size: 10.5px;
       text-transform: uppercase;
       letter-spacing: 0.6px;
-      color: $color-text-muted;
-      border-bottom: 1px solid $color-border;
-      font-weight: 600;
+      color: #71717a;
+      border-bottom: 1px solid #f1ece4;
+      font-weight: 700;
     }
 
     td {
-      padding: 14px 12px;
-      border-bottom: 1px solid $color-border-subtle;
-      color: $color-text-secondary;
+      padding: 16px 14px;
+      border-bottom: 1px solid #f6f3ee;
+      color: $color-text-primary;
+      vertical-align: middle;
+
+      &.idCol {
+        font-weight: 700;
+        color: $color-text-primary;
+        white-space: nowrap;
+      }
+
+      &.userCol {
+        .primaryName {
+          font-weight: 700;
+          color: $color-text-primary;
+          display: block;
+        }
+
+        .secondaryName {
+          font-size: 12px;
+          color: #71717a;
+          margin-top: 2px;
+          display: block;
+        }
+      }
+
+      &.dueCol {
+        font-weight: 700;
+        color: #dc2626; // Red text as in reference
+      }
+
+      &.actionsCol {
+        text-align: right;
+        white-space: nowrap;
+      }
     }
 
     tr:last-child td {
@@ -153,40 +142,21 @@
     }
 
     tr:hover td {
-      background-color: rgba(248, 250, 252, 0.6);
+      background-color: rgba(247, 245, 239, 0.4);
     }
   }
 }
 
-.statusCardList {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+.actionButtons {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 
-  .statusCardItem {
-    padding: 14px;
-    border-radius: $radius-md;
-    background-color: $color-surface-muted;
-    border: 1px solid $color-border-subtle;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  .btnApprove {
+    @include pill-btn-dark;
+  }
 
-    .info {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-
-      .itemTitle {
-        font-size: 13px;
-        font-weight: 600;
-        color: $color-text-primary;
-      }
-
-      .itemSubtitle {
-        font-size: 11px;
-        color: $color-text-muted;
-      }
-    }
+  .btnReject {
+    @include pill-btn-reject;
   }
 }

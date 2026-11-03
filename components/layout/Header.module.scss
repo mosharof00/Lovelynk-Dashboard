@@ -3,80 +3,77 @@
 
 .header {
   height: $header-height;
-  background-color: $color-surface;
-  border-bottom: 1px solid $color-border;
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 32px;
+  padding: 0 36px;
   position: sticky;
   top: 0;
   z-index: 40;
 }
 
-.titleArea {
+.adminProfile {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  flex-direction: column;
 
-  .title {
-    font-size: 18px;
+  .adminName {
+    font-size: 13.5px;
     font-weight: 700;
     color: $color-text-primary;
-    letter-spacing: -0.2px;
+    line-height: 1.2;
   }
 
-  .badge {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 8px;
-    border-radius: $radius-full;
-    background-color: $color-primary-light;
-    color: $color-primary;
+  .adminRole {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: $color-text-secondary;
   }
 }
 
-.actions {
+.rightArea {
   display: flex;
   align-items: center;
   gap: 16px;
 
-  .envTag {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 12px;
-    font-weight: 600;
-    color: $color-text-secondary;
-    background-color: $color-surface-muted;
-    border: 1px solid $color-border;
-    padding: 4px 10px;
+  .notificationButton {
+    position: relative;
+    width: 36px;
+    height: 36px;
     border-radius: $radius-full;
+    @include flex-center;
+    color: $color-text-primary;
+    transition: background-color $transition-fast;
 
-    .envDot {
-      width: 6px;
-      height: 6px;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+
+    .badge {
+      position: absolute;
+      top: 3px;
+      right: 3px;
+      min-width: 15px;
+      height: 15px;
       border-radius: $radius-full;
-      background-color: $color-success;
+      background-color: #18181b;
+      color: #ffffff;
+      font-size: 9.5px;
+      font-weight: 700;
+      @include flex-center;
+      padding: 0 3px;
     }
   }
 
-  .refreshButton {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
+  .avatarCircle {
+    width: 36px;
+    height: 36px;
+    border-radius: $radius-full;
+    background-color: #18181b;
+    color: #ffffff;
+    @include flex-center;
+    font-weight: 700;
     font-size: 13px;
-    font-weight: 500;
-    color: $color-text-secondary;
-    border: 1px solid $color-border;
-    border-radius: $radius-md;
-    background-color: $color-surface;
-    transition: all $transition-fast;
-
-    &:hover {
-      background-color: $color-surface-hover;
-      color: $color-text-primary;
-    }
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
   }
 }

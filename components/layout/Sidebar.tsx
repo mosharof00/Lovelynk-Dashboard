@@ -3,53 +3,44 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
-  LayoutDashboard,
+  LayoutGrid,
   Users,
   Heart,
   Send,
   LifeBuoy,
   Settings,
-  LogOut,
-  Sparkles,
+  CreditCard,
+  Activity,
+  HeartHandshake,
 } from 'lucide-react';
 import styles from './Sidebar.module.scss';
-import { createClient } from '@/lib/supabase/client';
-import { useRouter } from 'next/navigation';
 
 const NAV_ITEMS = [
-  { label: 'Overview', href: '/', icon: LayoutDashboard },
+  { label: 'Dashboard', href: '/', icon: LayoutGrid },
   { label: 'Users', href: '/users', icon: Users },
   { label: 'Couples', href: '/couples', icon: Heart },
   { label: 'Broadcasts', href: '/broadcasts', icon: Send },
   { label: 'Support Tickets', href: '/tickets', icon: LifeBuoy },
-  { label: 'App Settings', href: '/settings', icon: Settings },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
-  const router = useRouter();
-  const supabase = createClient();
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    router.push('/login');
-    router.refresh();
-  };
 
   return (
     <aside className={styles.sidebar}>
+      {/* Brand Header matching reference screenshot */}
       <div className={styles.brand}>
-        <div className={styles.logoIcon}>
-          <Sparkles size={20} />
+        <div className={styles.logoMark}>
+          L
         </div>
         <div className={styles.brandInfo}>
-          <span className={styles.brandName}>Lovelynk</span>
-          <span className={styles.brandTag}>Operations Dashboard</span>
+          <span className={styles.brandName}>LOVELYNK</span>
+          <span className={styles.brandTag}>COUPLES PLATFORM</span>
         </div>
       </div>
 
+      {/* Main Nav Items */}
       <nav className={styles.nav}>
-        <span className={styles.navSectionTitle}>Management</span>
         {NAV_ITEMS.map((item) => {
           const Icon = item.icon;
           const isActive =
@@ -70,18 +61,15 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className={styles.footer}>
-        <div className={styles.adminStatus}>
-          <span className={styles.statusDot} />
-          <span className={styles.adminEmail}>Admin Session</span>
-        </div>
-        <button
-          onClick={handleSignOut}
-          title="Sign out"
-          className={styles.logoutButton}
+      {/* Bottom Settings Link matching reference screenshot */}
+      <div className={styles.bottomSection}>
+        <Link
+          href="/settings"
+          className={`${styles.navItem} ${pathname.startsWith('/settings') ? styles.active : ''}`}
         >
-          <LogOut size={16} />
-        </button>
+          <Settings className={styles.icon} />
+          <span>Settings</span>
+        </Link>
       </div>
     </aside>
   );

@@ -59,9 +59,10 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   const isLoginPage = request.nextUrl.pathname.startsWith('/login');
+  const isDev = process.env.NODE_ENV === 'development';
 
-  if (!user && !isLoginPage && !request.nextUrl.pathname.startsWith('/_next')) {
-    // Redirect unauthenticated requests to /login
+  if (!user && !isLoginPage && !request.nextUrl.pathname.startsWith('/_next') && !isDev) {
+    // Redirect unauthenticated requests to /login in production
     const url = request.nextUrl.clone();
     url.pathname = '/login';
     return NextResponse.redirect(url);

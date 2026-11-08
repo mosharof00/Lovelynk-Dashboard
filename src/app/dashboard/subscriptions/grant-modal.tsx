@@ -169,3 +169,4 @@ export function GrantVipModal({ onSuccess }: GrantModalProps) {
     </>
   );
 }
+

@@ -169,3 +169,4 @@ export function InteractionSimulator({ couples }: { couples: CoupleOption[] }) {
     </div>
   );
 }
+

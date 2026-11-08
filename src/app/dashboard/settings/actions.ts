@@ -64,3 +64,4 @@ export async function saveAllAppSettings(prevState: any, formData: FormData) {
   revalidatePath('/dashboard/settings');
   return { success: true, message: 'Settings successfully updated!' };
 }
+

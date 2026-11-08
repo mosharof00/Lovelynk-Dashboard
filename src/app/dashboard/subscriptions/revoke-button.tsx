@@ -31,3 +31,4 @@ export function RevokeButton({ userId }: { userId: string }) {
     </button>
   );
 }
+

@@ -85,9 +85,11 @@ export function Sidebar({ onClose }: SidebarProps) {
         <div>
           <div className="p-5 sm:p-6 border-b border-[#EFECE6]/80 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-2xl bg-[#FFE0EF] border border-[#FF4FA3]/20 flex items-center justify-center text-[#FF4FA3] shadow-xs">
-                <Heart className="w-5 h-5 fill-[#FF4FA3]" />
-              </div>
+              <img
+                src="/logo.png"
+                alt="LoveLynk Logo"
+                className="w-9 h-9 rounded-xl shadow-xs object-cover"
+              />
               <div>
                 <h1 className="font-bold text-[#1A1530] tracking-tight leading-none text-base">LoveLynk</h1>
                 <span className="text-[11px] font-medium text-[#6B667A] flex items-center gap-1 mt-1">

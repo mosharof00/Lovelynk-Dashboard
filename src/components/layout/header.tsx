@@ -33,9 +33,11 @@ export function Header({
 
         {/* Mobile Logo Brand */}
         <div className="flex items-center gap-2 md:hidden">
-          <div className="w-7 h-7 rounded-lg bg-[#FFE0EF] flex items-center justify-center text-[#FF4FA3]">
-            <Heart className="w-4 h-4 fill-[#FF4FA3]" />
-          </div>
+          <img
+            src="/logo.png"
+            alt="LoveLynk Logo"
+            className="w-7 h-7 rounded-lg object-cover shadow-xs"
+          />
           <span className="font-bold text-sm tracking-tight text-[#1A1530]">LoveLynk</span>
         </div>
 

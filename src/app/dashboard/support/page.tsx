@@ -1,7 +1,7 @@
 import { createAdminClient } from '@/lib/supabase/server';
-import { LifeBuoy, Search, AlertCircle, CheckCircle2, Clock, ShieldAlert, Paperclip } from 'lucide-react';
+import { LifeBuoy, Search, AlertCircle, CheckCircle2, Clock, ShieldAlert, Paperclip, ImageIcon } from 'lucide-react';
 import { formatDate, formatDateTime } from '@/lib/utils';
-import { TicketModal } from './ticket-modal';
+import { TicketModal, TicketAttachment } from './ticket-modal';
 
 interface SupportTicketRow {
   id: string;
@@ -11,6 +11,7 @@ interface SupportTicketRow {
   subject: string;
   message: string;
   attachment_paths: string[];
+  attachments?: TicketAttachment[];
   app_version: string | null;
   device_model: string | null;
   os_version: string | null;
@@ -59,8 +60,31 @@ export default async function SupportPage() {
 
     if (error) {
       errorMsg = error.message;
-    } else {
-      tickets = (data as unknown as SupportTicketRow[]) || [];
+    } else if (data) {
+      // Pre-sign URLs for private support-attachments bucket
+      tickets = await Promise.all(
+        (data as any[]).map(async (row) => {
+          const paths: string[] = row.attachment_paths || [];
+          const attachments: TicketAttachment[] = [];
+          for (const p of paths) {
+            try {
+              const { data: signed } = await supabase
+                .storage
+                .from('support-attachments')
+                .createSignedUrl(p, 86400); // 24 hours
+              if (signed?.signedUrl) {
+                attachments.push({ path: p, url: signed.signedUrl });
+              }
+            } catch {
+              // Ignore failure for missing files
+            }
+          }
+          return {
+            ...row,
+            attachments,
+          };
+        })
+      );
     }
   } catch (err: any) {
     errorMsg = err.message || 'Failed to fetch support tickets';
@@ -84,7 +108,7 @@ export default async function SupportPage() {
             </h1>
           </div>
           <p className="text-sm text-[var(--color-text-muted)]">
-            Manage user inquiries, bug reports, and feedback submitted from the LoveLynk mobile app.
+            Manage user inquiries, bug reports, and inspect screenshots submitted from the mobile app.
           </p>
         </div>
 
@@ -143,6 +167,7 @@ export default async function SupportPage() {
                 tickets.map((t) => {
                   const isOpen = t.status === 'open';
                   const isResolved = t.status === 'resolved' || t.status === 'closed';
+                  const attachmentsCount = t.attachments?.length || t.attachment_paths?.length || 0;
 
                   return (
                     <tr key={t.id} className="hover:bg-[#FAF9F5] transition-colors">
@@ -153,10 +178,10 @@ export default async function SupportPage() {
                         <p className="text-[11px] text-slate-500 truncate mt-0.5">
                           {t.message}
                         </p>
-                        {t.attachment_paths && t.attachment_paths.length > 0 && (
-                          <div className="flex items-center gap-1 text-[10px] text-[var(--color-brand-rose)] mt-1 font-medium">
-                            <Paperclip className="w-3 h-3" />
-                            <span>{t.attachment_paths.length} screenshot(s)</span>
+                        {attachmentsCount > 0 && (
+                          <div className="flex items-center gap-1.5 text-[10px] text-[var(--color-brand-rose)] mt-1.5 font-medium">
+                            <ImageIcon className="w-3.5 h-3.5" />
+                            <span>{attachmentsCount} screenshot(s) attached</span>
                           </div>
                         )}
                       </td>

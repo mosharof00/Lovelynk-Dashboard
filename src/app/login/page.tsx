@@ -110,12 +110,14 @@ export default function LoginPage() {
       <div className="w-full max-w-md bg-white rounded-3xl border border-[#EFECE6] p-8 shadow-xl shadow-stone-200/50 relative z-10">
         {/* Brand Header */}
         <div className="flex flex-col items-center text-center mb-6">
-          <div className="w-14 h-14 rounded-2xl bg-[#FFF0F3] border border-[#FF4B72]/20 flex items-center justify-center text-[#FF4B72] shadow-xs mb-3">
-            <Heart className="w-7 h-7 fill-[#FF4B72]" />
-          </div>
-          <h1 className="text-2xl font-bold tracking-tight text-[#1E1E24]">LoveLynk Admin</h1>
-          <p className="text-xs text-[#64748B] mt-1 flex items-center gap-1.5 font-medium">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#FF4B72]" /> Secure Management Portal
+          <img
+            src="/logo.png"
+            alt="LoveLynk Logo"
+            className="w-14 h-14 rounded-2xl shadow-sm object-cover mb-3"
+          />
+          <h1 className="text-2xl font-bold tracking-tight text-[#1A1530]">LoveLynk Admin</h1>
+          <p className="text-xs text-[#6B667A] mt-1 flex items-center gap-1.5 font-medium">
+            <ShieldCheck className="w-3.5 h-3.5 text-[#FF4FA3]" /> Secure Management Portal
           </p>
         </div>
 

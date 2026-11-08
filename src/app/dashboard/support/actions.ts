@@ -32,3 +32,4 @@ export async function updateTicketStatus(ticketId: string, status: string, admin
   revalidatePath('/dashboard/support');
   return { success: true };
 }
+

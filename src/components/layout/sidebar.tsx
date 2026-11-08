@@ -72,13 +72,13 @@ export function Sidebar() {
       {/* Top Branding */}
       <div>
         <div className="p-6 border-b border-[#EFECE6]/80 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-[#FFF0F3] border border-[#FF4B72]/20 flex items-center justify-center text-[#FF4B72] shadow-sm">
-            <Heart className="w-5 h-5 fill-[#FF4B72]" />
+          <div className="w-10 h-10 rounded-2xl bg-[#FFE0EF] border border-[#FF4FA3]/20 flex items-center justify-center text-[#FF4FA3] shadow-xs">
+            <Heart className="w-5 h-5 fill-[#FF4FA3]" />
           </div>
           <div>
-            <h1 className="font-bold text-[#1E1E24] tracking-tight leading-none text-base">LoveLynk</h1>
-            <span className="text-[11px] font-medium text-[#64748B] flex items-center gap-1 mt-1">
-              <ShieldCheck className="w-3 h-3 text-[#FF4B72]" /> Admin Portal
+            <h1 className="font-bold text-[#1A1530] tracking-tight leading-none text-base">LoveLynk</h1>
+            <span className="text-[11px] font-medium text-[#6B667A] flex items-center gap-1 mt-1">
+              <ShieldCheck className="w-3 h-3 text-[#FF4FA3]" /> Admin Portal
             </span>
           </div>
         </div>
@@ -97,14 +97,14 @@ export function Sidebar() {
                 className={cn(
                   'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150',
                   isActive
-                    ? 'bg-[#1E1E24] text-white shadow-sm font-semibold'
-                    : 'text-[#64748B] hover:text-[#1E1E24] hover:bg-[#F9F8F4]'
+                    ? 'bg-[#FF4FA3] text-white shadow-md shadow-[#FF4FA3]/25 font-semibold'
+                    : 'text-[#6B667A] hover:text-[#FF4FA3] hover:bg-[#FFE0EF]/40'
                 )}
               >
                 <item.icon
                   className={cn(
                     'w-4 h-4',
-                    isActive ? 'text-[#FF4B72]' : 'text-[#64748B]'
+                    isActive ? 'text-white' : 'text-[#6B667A]'
                   )}
                 />
                 <span>{item.name}</span>

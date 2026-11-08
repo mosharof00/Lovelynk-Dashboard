@@ -86,7 +86,7 @@ export default async function WidgetsPage() {
         <div className="flex items-center gap-2">
           <Link
             href="/dashboard/sandbox"
-            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl shadow-xs transition-colors"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-[#FF4FA3] hover:bg-[#E03E8A] text-white text-xs font-semibold rounded-xl shadow-md shadow-[#FF4FA3]/25 transition-all cursor-pointer"
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>Simulate Interaction</span>

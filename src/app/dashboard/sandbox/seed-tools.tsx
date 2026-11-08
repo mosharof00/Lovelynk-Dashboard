@@ -55,7 +55,7 @@ export function SeedTools() {
         <button
           type="submit"
           disabled={isPending}
-          className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold rounded-xl shadow-xs transition-colors disabled:opacity-60 cursor-pointer"
+          className="w-full inline-flex items-center justify-center gap-2 px-5 py-3 bg-[#FF4FA3] hover:bg-[#E03E8A] text-white text-xs font-semibold rounded-xl shadow-md shadow-[#FF4FA3]/25 transition-all disabled:opacity-60 cursor-pointer"
         >
           {isPending ? (
             <>

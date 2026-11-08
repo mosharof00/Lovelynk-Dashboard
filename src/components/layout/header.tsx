@@ -38,14 +38,14 @@ export function Header({ userEmail = 'admin@lovelynk.io' }: HeaderProps) {
 
         {/* Admin User Pill */}
         <div className="flex items-center gap-2 pl-2 border-l border-[#EFECE6]">
-          <div className="w-8 h-8 rounded-full bg-[#1E1E24] text-white flex items-center justify-center font-bold text-xs uppercase shadow-sm">
+          <div className="w-8 h-8 rounded-full bg-[#FF4FA3] text-white flex items-center justify-center font-bold text-xs uppercase shadow-sm">
             {userEmail.substring(0, 2)}
           </div>
           <div className="hidden sm:block text-left">
-            <p className="text-xs font-semibold text-[#1E1E24] truncate max-w-[140px]">
+            <p className="text-xs font-semibold text-[#1A1530] truncate max-w-[140px]">
               {userEmail}
             </p>
-            <p className="text-[10px] text-[#64748B]">Super Admin</p>
+            <p className="text-[10px] text-[#6B667A]">Super Admin</p>
           </div>
         </div>
       </div>

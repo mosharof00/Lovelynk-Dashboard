@@ -3,19 +3,23 @@
 @theme {
   --color-cream: #F9F8F4;
   --color-card-border: #EFECE6;
-  --color-brand-rose: #FF4B72;
-  --color-brand-rose-hover: #E03E61;
-  --color-brand-pink: #FFF0F3;
+  --color-brand-rose: #FF4FA3;
+  --color-brand-rose-hover: #E03E8A;
+  --color-brand-pink: #FFE0EF;
+  --color-brand-secondary: #42C2FF;
   --color-pastel-yellow: #FEF7D6;
   --color-pastel-mint: #EBF8F2;
   --color-pastel-sky: #EFF6FF;
-  --color-text-main: #1E1E24;
-  --color-text-muted: #64748B;
+  --color-text-main: #1A1530;
+  --color-text-muted: #6B667A;
 }
 
 :root {
   --background: #F9F8F4;
-  --foreground: #1E1E24;
+  --foreground: #1A1530;
+  --primary: #FF4FA3;
+  --primary-light: #FFE0EF;
+  --secondary: #42C2FF;
 }
 
 body {

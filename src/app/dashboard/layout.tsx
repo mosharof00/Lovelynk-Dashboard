@@ -1,6 +1,5 @@
-import { Sidebar } from '@/components/layout/sidebar';
-import { Header } from '@/components/layout/header';
-import { createClient } from '@/lib/supabase/server';
+import { DashboardShell } from '@/components/layout/dashboard-shell';
+import { createClient, createAdminClient } from '@/lib/supabase/server';
 
 export default async function DashboardLayout({
   children,
@@ -8,23 +7,30 @@ export default async function DashboardLayout({
   children: React.ReactNode;
 }) {
   const supabase = await createClient();
+  const adminClient = createAdminClient();
+
   const {
     data: { user },
   } = await supabase.auth.getUser();
 
-  return (
-    <div className="flex min-h-screen bg-[#F9F8F4] text-[#1E1E24]">
-      {/* Fixed Left Sidebar */}
-      <Sidebar />
+  // Get live open support tickets count for notification badge
+  let openTicketsCount = 0;
+  try {
+    const { count } = await adminClient
+      .from('support_tickets')
+      .select('*', { count: 'exact', head: true })
+      .eq('status', 'open');
+    openTicketsCount = count ?? 0;
+  } catch {
+    openTicketsCount = 0;
+  }
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0">
-        <Header userEmail={user?.email || 'admin@lovelynk.com'} />
-        <main className="flex-1 p-8 overflow-y-auto">
-          {children}
-        </main>
-      </div>
-    </div>
+  return (
+    <DashboardShell
+      userEmail={user?.email || 'admin@lovelynk.com'}
+      openTicketCount={openTicketsCount}
+    >
+      {children}
+    </DashboardShell>
   );
 }
-

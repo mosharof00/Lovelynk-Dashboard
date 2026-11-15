@@ -36,6 +36,23 @@ export default function LoginPage() {
       }
 
       if (data.user) {
+        // Verify user has admin privileges
+        const isRoleAdmin = data.user.app_metadata?.role === 'admin';
+        if (!isRoleAdmin) {
+          const { data: adminRecord } = await supabase
+            .from('admins')
+            .select('id, is_active')
+            .eq('id', data.user.id)
+            .eq('is_active', true)
+            .maybeSingle();
+
+          if (!adminRecord) {
+            await supabase.auth.signOut();
+            setError('Access Denied: Your account does not have administrator privileges.');
+            return;
+          }
+        }
+
         router.push('/dashboard');
         router.refresh();
       }
@@ -92,6 +109,23 @@ export default function LoginPage() {
       }
 
       if (data.user) {
+        // Verify user has admin privileges
+        const isRoleAdmin = data.user.app_metadata?.role === 'admin';
+        if (!isRoleAdmin) {
+          const { data: adminRecord } = await supabase
+            .from('admins')
+            .select('id, is_active')
+            .eq('id', data.user.id)
+            .eq('is_active', true)
+            .maybeSingle();
+
+          if (!adminRecord) {
+            await supabase.auth.signOut();
+            setError('Access Denied: Your account does not have administrator privileges.');
+            return;
+          }
+        }
+
         router.push('/dashboard');
         router.refresh();
       }

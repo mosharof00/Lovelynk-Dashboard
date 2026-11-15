@@ -40,6 +40,28 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
+  // Security check: restrict dashboard access strictly to active admins
+  if (user && isDashboardPage) {
+    const isRoleAdmin = user.app_metadata?.role === 'admin';
+    if (!isRoleAdmin) {
+      const { data: adminRecord } = await supabase
+        .from('admins')
+        .select('id, is_active')
+        .eq('id', user.id)
+        .eq('is_active', true)
+        .maybeSingle();
+
+      if (!adminRecord) {
+        // Sign out unauthorized user and redirect with error
+        await supabase.auth.signOut();
+        const url = request.nextUrl.clone();
+        url.pathname = '/login';
+        url.searchParams.set('error', 'unauthorized');
+        return NextResponse.redirect(url);
+      }
+    }
+  }
+
   if (user && isAuthPage) {
     const url = request.nextUrl.clone();
     url.pathname = '/dashboard';
